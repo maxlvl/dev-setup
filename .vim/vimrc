@@ -1,0 +1,93 @@
+
+execute pathogen#infect()
+
+set nocompatible
+filetype plugin indent on
+" Display line numbers and rulers.
+set number
+set ruler
+syntax on
+
+" Remap leader key to ','
+let mapleader = ","
+
+" Remap jj to escape
+inoremap jj <Esc>
+
+" Set encoding
+set encoding=utf-8
+
+
+" Whitespace features
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set list listchars=tab:▸\ ,trail:·
+set noeol
+set autoindent
+set expandtab
+
+" Use system clipboard
+set clipboard=unnamedplus
+" more convenient clipboard keybindings
+noremap y "*y
+noremap p "*p
+noremap Y "+y
+noremap P "+p
+noremap yy "*yy
+
+" No Swap files. 
+set noswapfile
+set nobackup
+set nowritebackup
+
+" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set gdefault
+nnoremap / /\v
+vnoremap / /\v
+set grepprg=ack\ --column
+set grepformat=%f:%l:%c:%m
+
+" Remap keys for split window ease of use.
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
+nmap <Leader>j <C-W>j
+nmap <Leader>k <C-W>k
+nmap <Leader>h <C-W>h
+nmap <Leader>l <C-W>l
+
+" Allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" Clear search highlighting
+map <Leader><Space> :nohl<CR>
+
+" NerdTree config
+let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$']
+"show dot files
+let NERDTreeShowHidden = 1
+map <Leader>n :NERDTreeToggle<CR>
+
+" ALE SETTINGS
+" Autmoatically fix files on save with ale
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+
+" command T config
+let g:CommandTMaxHeight=20
+
+" Javascript, CSS, and html settings
+au FileType {css,javascriptreact,typescriptreact,typescript,javascript,mustache,htmljinja,html} setl textwidth=120 softtabstop=2 shiftwidth=2 tabstop=2 colorcolumn=120
+" make python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
+au FileType python setl softtabstop=4 shiftwidth=4 tabstop=4 textwidth=100 colorcolumn=99
+au FileType rst setl textwidth=80 colorcolumn=81 shiftwidth=4 softtabstop=4 tabstop=4
+
+"Vimwiki settings
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
